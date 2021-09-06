@@ -63,3 +63,26 @@ For this project we need two subprojects:
 - Start the Nifi Flow
    - Right click on the Process Group box
    - Choose `Start`
+
+# Upgrade
+
+## Registry
+
+- Open a browser to the registry http://localhost:18080/nifi-registry
+- Click the `Mellon Demonstrator` menu
+- In Actions select `Import new version`
+- Select the new JSON flow file from the file system
+
+## Nifi
+
+- In the main work space right click `Nifi Flow`
+- Select `Version` -> `Change version`
+- Select the new version and click `Change`
+
+# Usage
+
+- Open a browser to http://localhost:1999 to see the LDN inbox
+- Add a JSON-LD file with an AS2 activity to `POrchestratorHelper/local/ldn-sender1` 
+- This file will be processed by the rules defined in `POrchestrator/rules`
+- The event log will be made available in `POrchestratorHelper/local/orchestrator`
+- AS2 responses will be sent to the orgin defined in the AS2 JSON-LD input
