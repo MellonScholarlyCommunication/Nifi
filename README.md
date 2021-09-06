@@ -6,6 +6,10 @@ This is a demonstrator for the Mellon project which contains:
 - A small LDP server
 - An Orchestrator component
 
+# Live demonstrator
+
+http://157.193.231.95
+
 # Requirements
 
 - [Apache Nifi](https://nifi.apache.org)
