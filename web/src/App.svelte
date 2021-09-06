@@ -1,11 +1,25 @@
 <script>
+	import Inbox from './Inbox.svelte';
+	import SendNotification from './SendNotification.svelte';
+	import EventLog from './EventLog.svelte';
+	import Send from './Send.svelte';
 	export let name;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>{name}</h1>
 </main>
+
+<Send/>
+
+<div class="row">
+ <div class="column">
+	<Inbox/>
+ </div>
+ <div class="column">
+	<EventLog/>
+ </div>
+</div>
 
 <style>
 	main {
@@ -27,4 +41,20 @@
 			max-width: none;
 		}
 	}
+
+	* {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
 </style>
