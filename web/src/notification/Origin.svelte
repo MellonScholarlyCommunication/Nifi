@@ -1,8 +1,8 @@
 <script>
     export let origin = `
-"id": "http://localhost",
+"id": "http://157.193.231.95",
 "type": "Service",
-"inbox": "http://localhost/inbox/"
+"inbox": "http://157.193.231.95/inbox"
     `.trim();
 </script>
 

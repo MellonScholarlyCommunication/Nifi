@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
 
-    let ldpUrl = "http://localhost:1999";
+    let ldpUrl = "http://157.193.231.95/inbox";
     let refreshInterval = 30; // seconds
 
     let promise = loadInbox();
