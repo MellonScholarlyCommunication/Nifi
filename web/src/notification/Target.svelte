@@ -1,8 +1,8 @@
 <script>
     export let target =`
-"id": "http://157.193.231.95",
-"type": "Service",
-"inbox": "http://157.193.231.95/inbox"
+"id": "http://127.0.0.1:2000/bob/card.ttl#me",
+"type": "Person",
+"inbox": "http://127.0.0.1:2000/bob/inbox"
     `.trim();
 </script>
 

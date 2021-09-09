@@ -39,14 +39,16 @@
             object: jObject
         };
 
-        let response = await fetch(notification.target.inbox, {
+        // Send the notification to the inbox of the sender ...
+        // The orchestrator will forward it to the target
+        let response = await fetch(notification.origin.inbox, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/ld+json'
             },
             body: JSON.stringify(notification)
         });
-     
+
         return response.status;
     }
 

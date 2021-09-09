@@ -14,11 +14,24 @@
 
 <div class="row">
  <div class="column">
-	<Inbox/>
+	<Inbox ldpUrl="http://localhost:2000/alice/inbox"
+		   refreshInterval="30"/>
  </div>
  <div class="column">
-	<EventLog/>
+	<EventLog ldpUrl="http://127.0.0.1:2000/alice/events"
+			  refreshInterval="30"/>
  </div>
+</div>
+
+<div class="row">
+	<div class="column">
+	   <Inbox ldpUrl="http://localhost:2000/bob/inbox"
+			  refreshInterval="30"/>
+	</div>
+	<div class="column">
+	   <EventLog ldpUrl="http://127.0.0.1:2000/bob/events"
+				 refreshInterval="30"/>
+	</div>
 </div>
 
 <style>

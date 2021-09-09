@@ -1,8 +1,12 @@
 <script>
     import { onMount } from 'svelte';
 
-    let ldpUrl = "http://157.193.231.95/eventlog";
-    let refreshInterval = 30; // seconds
+     // Location of the eventlog
+    export let ldpUrl;
+    // Autorefresh after X seconds
+    export let refreshInterval = 30; //seconds
+    // Maximum number of rows in the output
+    export let maxRows = 5; 
 
     let promise = loadEventlog();
 
@@ -17,14 +21,16 @@
         promise = loadEventlog();
     }
 
-    onMount( 
-         () => {
-            const interval = setInterval( 
-                () => { handleClick(); } ,  refreshInterval * 1000
-            );
+    if (refreshInterval > 0) {
+        onMount( 
+            () => {
+                const interval = setInterval( 
+                    () => { handleClick(); } ,  refreshInterval * 1000
+                );
 
-            return () => { clearInterval(interval) }
-         });
+                return () => { clearInterval(interval) }
+            });
+    }
 </script>
 
 <h2>Event log @ {ldpUrl}</h2>
@@ -38,9 +44,11 @@ Location: <input bind:value={ldpUrl}>
     <table>
         <th>Events</th>
     {#each data.contains as url , i }
+        {#if i < maxRows}
         <tr>
             <td>{i+1}</td><td><a href="{url}">{url}</a></td>
         </tr>
+        {/if}
     {/each}
     </table>
 {:catch error}
