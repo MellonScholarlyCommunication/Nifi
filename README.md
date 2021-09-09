@@ -8,7 +8,7 @@ This is a demonstrator for the Mellon project which contains:
 
 # Live demonstrator
 
-http://157.193.231.95
+http://157.193.231.95/~phochste
 
 # Requirements
 
