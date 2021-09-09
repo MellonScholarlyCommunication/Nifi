@@ -6,6 +6,8 @@
     import Object from './notification/Object.svelte';
     import Type from './notification/Type.svelte';
 
+    export let ldpUrl;
+
     let as2Type;
     let origin;
     let actor;
@@ -87,12 +89,12 @@
 <table>
     <tr>
         <td>
-            <Origin bind:origin/>
+            <Origin bind:origin ldpUrl={ldpUrl} />
         </td>
     </tr>
     <tr>
         <td>
-            <Target bind:target/>
+            <Target bind:target ldpUrl={ldpUrl} />
         </td>
     </tr>
 </table>
@@ -108,7 +110,7 @@
     </tr>
     <tr>
         <td>
-            <Actor bind:actor/>
+            <Actor bind:actor />
         </td>
     </tr>
 </table>

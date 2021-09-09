@@ -1,8 +1,10 @@
 <script>
+    export let ldpUrl;
+
     export let target =`
-"id": "http://127.0.0.1:2000/bob/card.ttl#me",
+"id": "${ldpUrl}/bob/card.ttl#me",
 "type": "Person",
-"inbox": "http://127.0.0.1:2000/bob/inbox"
+"inbox": "${ldpUrl}/bob/inbox"
     `.trim();
 </script>
 

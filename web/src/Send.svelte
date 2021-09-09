@@ -2,6 +2,7 @@
 	import Modal from './Modal.svelte';
     import SendNotification from './SendNotification.svelte';
 
+	export let ldpUrl;
 	let showModal = false;
 </script>
 
@@ -11,6 +12,6 @@
 
 {#if showModal}
 	<Modal on:close="{() => showModal = false}">
-		<SendNotification/>
+		<SendNotification ldpUrl={ldpUrl}/>
 	</Modal>
 {/if}

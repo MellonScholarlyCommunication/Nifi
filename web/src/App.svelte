@@ -4,32 +4,33 @@
 	import EventLog from './EventLog.svelte';
 	import Send from './Send.svelte';
 	export let name;
+	export let ldp;
 </script>
 
 <main>
 	<h1>{name}</h1>
 </main>
 
-<Send/>
+<Send ldpUrl="{ldp}"/>
 
 <div class="row">
  <div class="column">
-	<Inbox ldpUrl="http://localhost:2000/alice/inbox"
+	<Inbox ldpUrl="{ldp}/alice/inbox"
 		   refreshInterval="30"/>
  </div>
  <div class="column">
-	<EventLog ldpUrl="http://127.0.0.1:2000/alice/events"
+	<EventLog ldpUrl="{ldp}/alice/events"
 			  refreshInterval="30"/>
  </div>
 </div>
 
 <div class="row">
 	<div class="column">
-	   <Inbox ldpUrl="http://localhost:2000/bob/inbox"
+	   <Inbox ldpUrl="{ldp}/bob/inbox"
 			  refreshInterval="30"/>
 	</div>
 	<div class="column">
-	   <EventLog ldpUrl="http://127.0.0.1:2000/bob/events"
+	   <EventLog ldpUrl="{ldp}/bob/events"
 				 refreshInterval="30"/>
 	</div>
 </div>
