@@ -13,32 +13,34 @@
 <Send ldpUrl="{ldp}"/>
 
 <div class="row">
- <div class="column">
-	<Inbox title="Alice's inbox"
+ <div class="column alice" >
+   <h2>Alice</h2>
+	<Inbox title="Inbox"
 			ldpUrl={ldp}
 			containerUrl="{ldp}/alice/inbox"
 		   	refreshInterval="30"/>
  </div>
- <div class="column">
-	<Inbox title="Alice's events"
-		    ldpUrl={ldp}
-			containerUrl="{ldp}/alice/events"
-		   	refreshInterval="30"/>
+ <div class="column bob">
+	<h2>Bob</h2>
+	<Inbox title="Inbox"
+			ldpUrl={ldp}
+			containerUrl="{ldp}/bob/inbox"
+			refreshInterval="30"/>
  </div>
 </div>
 
 <div class="row">
-	<div class="column">
-		<Inbox title="Bob's inbox"
-				ldpUrl={ldp}
-				containerUrl="{ldp}/bob/inbox"
-				refreshInterval="30"/>
+	<div class="column alice">
+	<Inbox title="Events"
+			ldpUrl={ldp}
+			containerUrl="{ldp}/alice/events"
+		   refreshInterval="30"/>
 	</div>
-	<div class="column">
-		<Inbox title="Bob's events"
-				ldpUrl={ldp}
-				containerUrl="{ldp}/bob/events"
-				refreshInterval="30"/>
+	<div class="column bob">
+	<Inbox title="Events"
+			ldpUrl={ldp}
+			containerUrl="{ldp}/bob/events"
+			refreshInterval="30"/>
 	</div>
 </div>
 
@@ -70,7 +72,7 @@
     .column {
         float: left;
         width: 50%;
-        padding: 5px;
+        padding: 25px;
     }
 
     .row::after {
@@ -78,4 +80,10 @@
         clear: both;
         display: table;
     }
+
+	.alice {
+		background-color: whitesmoke;
+	}
+
+	.bob {} 
 </style>

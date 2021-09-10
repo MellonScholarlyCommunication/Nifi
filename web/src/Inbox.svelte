@@ -81,16 +81,15 @@
     }
 </script>
 
-<h2>{title}</h2>
+<h3>{title}</h3>
 
-Location: <input bind:value={containerUrl}> 
-          <button on:click={handleClick}>Manual Refresh</button>
+<button on:click={handleClick}>Manual Refresh</button>
+<div><i>{containerUrl}</i></div>
 
 {#await promise}
   <p>...loading inbox</p>
 {:then data}
     <table>
-        <th>Notifications</th>
     {#each data.contains as obj , i }
       {#if i < maxRows}
         <tr>
@@ -104,7 +103,7 @@ Location: <input bind:value={containerUrl}>
                 <span class="from">{upperCase(about.from)}</span>
 
                 <i>sends</i>
-                
+
                 (
                     <span class="type">{about.type}</span>
 
@@ -128,14 +127,6 @@ Location: <input bind:value={containerUrl}>
 {/await}
 
 <style>
-    input {
-        width: 300px
-    }
-
-    th {
-        text-align: left;
-    }
-
     tr {
         background-color: white;
         width: 100%;
