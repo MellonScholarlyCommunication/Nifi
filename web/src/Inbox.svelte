@@ -43,8 +43,10 @@
         const notification = await loadInbox(obj['id']);    
         const from = notification['origin']['id'] || "unknown";
         const to   = notification['target']['id'] || "unknown";
+        let what   = notification['object']['type'] || "unknown";
         let type   = notification['type'] || "";
 
+        what = [].concat(what);
         type = [].concat(type);
 
         const fromName = from
@@ -55,9 +57,12 @@
                             .replaceAll(`${ldpUrl}/`,"")
                             .replaceAll(/\/.*/g,"");
         
-        const typeName = type.join("|");
-
+        const whatName = what.join("+");
+        
+        const typeName = type.join("+");
+        
         return {
+            "what" : whatName ,
             "type" : typeName ,
             "from" : fromName ,
             "to"   : toName
@@ -95,11 +100,18 @@ Location: <input bind:value={containerUrl}>
             {:then about}
                 <td>
                     <a href="{obj.id}">
-                <span class="type">{about.type}</span>
-
-                <i> from </i>
-
+                
                 <span class="from">{upperCase(about.from)}</span>
+
+                <i>sends</i>
+                
+                (
+                    <span class="type">{about.type}</span>
+
+                    <i>a</i>
+                
+                    <span class="what">{about.what}</span>
+                )
 
                 <i>to</i>
 
@@ -131,6 +143,10 @@ Location: <input bind:value={containerUrl}>
     }
 
     .type {
+        font-weight: bold;
+    }
+
+    .what {
         font-weight: bold;
     }
 
