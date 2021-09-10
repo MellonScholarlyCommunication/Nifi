@@ -1,7 +1,6 @@
 <script>
 	import Inbox from './Inbox.svelte';
 	import SendNotification from './SendNotification.svelte';
-	import EventLog from './EventLog.svelte';
 	import Send from './Send.svelte';
 	export let name;
 	export let ldp;
@@ -15,23 +14,27 @@
 
 <div class="row">
  <div class="column">
-	<Inbox ldpUrl="{ldp}/alice/inbox"
+	<Inbox title="Alice's inbox"
+		   ldpUrl="{ldp}/alice/inbox"
 		   refreshInterval="30"/>
  </div>
  <div class="column">
-	<EventLog ldpUrl="{ldp}/alice/events"
-			  refreshInterval="30"/>
+	<Inbox title="Alice's events"
+		   ldpUrl="{ldp}/alice/events"
+		   refreshInterval="30"/>
  </div>
 </div>
 
 <div class="row">
 	<div class="column">
-	   <Inbox ldpUrl="{ldp}/bob/inbox"
+	   <Inbox title="Bob's inbox"
+	          ldpUrl="{ldp}/bob/inbox"
 			  refreshInterval="30"/>
 	</div>
 	<div class="column">
-	   <EventLog ldpUrl="{ldp}/bob/events"
-				 refreshInterval="30"/>
+	   <Inbox title="Bob's events"
+	   		  ldpUrl="{ldp}/bob/events"
+			  refreshInterval="30"/>
 	</div>
 </div>
 
