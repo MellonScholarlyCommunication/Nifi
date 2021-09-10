@@ -124,12 +124,6 @@
 </div>
 
 <style>
-    th {
-        padding-right: 20px;
-        text-align: left;
-        vertical-align: top;
-    }
-
     * {
         box-sizing: border-box;
         width: 100%;

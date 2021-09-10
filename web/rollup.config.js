@@ -28,7 +28,7 @@ function serve() {
 	};
 }
 
-export default {
+const configs = {
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
@@ -74,3 +74,12 @@ export default {
 		clearScreen: false
 	}
 };
+
+if (production) {
+	configs.input = 'src/main-prod.js';
+}
+else {
+	configs.input = 'src/main-dev.js';
+}
+
+export default configs;
