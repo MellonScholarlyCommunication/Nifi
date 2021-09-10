@@ -6,7 +6,7 @@
         'Accept' ,
         'Reject' ,
         'Undo'   ,
-        'Annouce',
+        'Announce',
     ];
 </script>
 
