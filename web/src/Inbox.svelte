@@ -6,12 +6,16 @@
 
     // Location of the inbox
     export let ldpUrl; 
+    
+    // Location of the inbox
+    export let containerUrl; 
+
     // Autorefresh after X seconds
     export let refreshInterval = 30;
     // Maximum number of rows in the output
     export let maxRows = 5; 
 
-    let promise = loadInbox(ldpUrl);
+    let promise = loadInbox(containerUrl);
 
     async function loadInbox(url) {
         const response = await fetch(url);
@@ -20,7 +24,7 @@
     }
 
     function handleClick() {
-        promise = loadInbox(ldpUrl);
+        promise = loadInbox(containerUrl);
     }
 
     function shortId(url) {
@@ -44,11 +48,11 @@
         type = [].concat(type);
 
         const fromName = from
-                            .replaceAll(/http(s)?:\/\/[^\/]+\//g,"")
+                            .replaceAll(`${ldpUrl}/`,"")
                             .replaceAll(/\/.*/g,"");
 
         const toName = to
-                            .replaceAll(/http(s)?:\/\/[^\/]+\//g,"")
+                            .replaceAll(`${ldpUrl}/`,"")
                             .replaceAll(/\/.*/g,"");
         
         const typeName = type.join("|");
@@ -74,7 +78,7 @@
 
 <h2>{title}</h2>
 
-Location: <input bind:value={ldpUrl}> 
+Location: <input bind:value={containerUrl}> 
           <button on:click={handleClick}>Manual Refresh</button>
 
 {#await promise}
