@@ -3,6 +3,8 @@
     import SendNotification from './SendNotification.svelte';
 
 	export let ldpUrl;
+	export let fromName;
+	export let toName;
 	let showModal = false;
 </script>
 
@@ -12,6 +14,6 @@
 
 {#if showModal}
 	<Modal on:close="{() => showModal = false}">
-		<SendNotification ldpUrl={ldpUrl}/>
+		<SendNotification ldpUrl={ldpUrl} fromName={fromName} toName={toName}/>
 	</Modal>
 {/if}

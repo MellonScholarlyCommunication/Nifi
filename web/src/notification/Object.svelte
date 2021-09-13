@@ -1,4 +1,6 @@
 <script>
+    export let ldpUrl;
+    
     export let object=`
 "id": "https://origin-system.org/resources/0021",
 "ietf:cite-as": "https://doi.org/10.4598/12123487",

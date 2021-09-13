@@ -65,7 +65,7 @@
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		width: 50%;
+		width: 800px;
 		/* max-width: 42em;
 		max-height: 100%; */
 		overflow: auto;

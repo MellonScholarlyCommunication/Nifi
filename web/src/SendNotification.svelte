@@ -7,6 +7,8 @@
     import Type from './notification/Type.svelte';
 
     export let ldpUrl;
+    export let fromName;
+    export let toName;
 
     let as2Type;
     let origin;
@@ -89,12 +91,12 @@
 <table>
     <tr>
         <td>
-            <Origin bind:origin ldpUrl={ldpUrl} />
+            <Actor bind:actor ldpUrl={ldpUrl} name={fromName}/>
         </td>
     </tr>
     <tr>
         <td>
-            <Target bind:target ldpUrl={ldpUrl} />
+            <Origin bind:origin ldpUrl={ldpUrl} name={fromName}/>
         </td>
     </tr>
 </table>
@@ -105,12 +107,12 @@
 <table style="float: left;">
     <tr>
         <td>
-            <Object bind:object/>
+            <Object bind:object ldpUrl={ldpUrl} />
         </td>
     </tr>
     <tr>
         <td>
-            <Actor bind:actor />
+            <Target bind:target ldpUrl={ldpUrl} name={toName} />
         </td>
     </tr>
 </table>

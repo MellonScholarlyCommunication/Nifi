@@ -1,10 +1,10 @@
 <script>
     export let ldpUrl;
-
+    export let name;
     export let target =`
-"id": "${ldpUrl}/bob/card.ttl#me",
+"id": "${ldpUrl}/${name}/card.ttl#me",
 "type": "Person",
-"inbox": "${ldpUrl}/bob/inbox"
+"inbox": "${ldpUrl}/${name}/inbox"
     `.trim();
 </script>
 

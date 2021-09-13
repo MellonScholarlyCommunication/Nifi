@@ -1,10 +1,10 @@
 <script>
     export let ldpUrl;
-
+    export let name;
     export let origin = `
-"id": "${ldpUrl}/alice/card.ttl#me",
-"type": "Person",
-"inbox": "${ldpUrl}/alice/inbox"
+"id": "${ldpUrl}/o_${name}/card.ttl#me",
+"type": "Service",
+"inbox": "${ldpUrl}/o_${name}/inbox"
     `.trim();
 </script>
 

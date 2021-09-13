@@ -1,10 +1,12 @@
 <script>
+    export let ldpUrl;
+    export let name;
     export let actor =`
-"id": "https://orcid.org/0000-0002-1825-0097",
+"id": "${ldpUrl}/${name}/card.ttl#me",
 "type": "Person",
-"inbox": "https://josiahcarberry.com/ldn/inbox",
-"name": "Josiah Carberry"
+"inbox": "${ldpUrl}/${name}/inbox"
     `.trim();
+    
 </script>
 
 <b>Actor</b><br>

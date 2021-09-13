@@ -41,7 +41,7 @@
 
     async function shortAbout(obj) {
         const notification = await loadInbox(obj['id']);    
-        const from = notification['origin']['id'] || "unknown";
+        const from = notification['actor']['id'] || "unknown";
         const to   = notification['target']['id'] || "unknown";
         let what   = notification['object']['type'] || "unknown";
         let type   = notification['type'] || "";
@@ -83,8 +83,7 @@
 
 <h3>{title}</h3>
 
-<button on:click={handleClick}>Manual Refresh</button>
-<div><i>{containerUrl}</i></div>
+<div><i>{containerUrl}</i> <a href="#" on:click="{handleClick}">Refresh</a></div>
 
 {#await promise}
   <p>...loading inbox</p>
@@ -149,4 +148,3 @@
         font-weight: bold;
     }
 </style>
-

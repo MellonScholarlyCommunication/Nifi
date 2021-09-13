@@ -10,10 +10,9 @@
 	<h1>{name}</h1>
 </main>
 
-<Send ldpUrl="{ldp}"/>
-
 <div class="row">
  <div class="column alice" >
+	<Send ldpUrl="{ldp}" fromName="alice" toName="bob" />
    <h2>Alice</h2>
 	<Inbox title="Inbox"
 			ldpUrl={ldp}
@@ -21,6 +20,7 @@
 		   	refreshInterval="30"/>
  </div>
  <div class="column bob">
+	<Send ldpUrl="{ldp}" fromName="bob" toName="alice" />
 	<h2>Bob</h2>
 	<Inbox title="Inbox"
 			ldpUrl={ldp}
@@ -34,12 +34,27 @@
 	<Inbox title="Events"
 			ldpUrl={ldp}
 			containerUrl="{ldp}/alice/events"
-		   refreshInterval="30"/>
+		    refreshInterval="30"/>
 	</div>
 	<div class="column bob">
 	<Inbox title="Events"
 			ldpUrl={ldp}
 			containerUrl="{ldp}/bob/events"
+			refreshInterval="30"/>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column orchestrator">
+		<Inbox title="Orchestrator"
+			ldpUrl={ldp}
+			containerUrl="{ldp}/o_alice/inbox"
+			refreshInterval="30"/>
+	</div>
+	<div class="column orchestrator">
+		<Inbox title="Orchestrator"
+			ldpUrl={ldp}
+			containerUrl="{ldp}/o_bob/inbox"
 			refreshInterval="30"/>
 	</div>
 </div>
@@ -82,8 +97,17 @@
     }
 
 	.alice {
-		background-color: whitesmoke;
+		border: 1px solid #ccc;
+		border-radius: 16px;
 	}
 
-	.bob {} 
+	.bob {
+		border: 1px solid #ccc;
+		border-radius: 16px;
+	} 
+
+	.orchestrator {
+		border: 1px solid #ccc;
+		border-radius: 16px;
+	}
 </style>
