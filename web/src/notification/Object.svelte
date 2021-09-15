@@ -1,10 +1,10 @@
-<script>
-    export let ldpUrl = "";
-    
+<script> 
     export let object=`
-"id": "https://origin-system.org/resources/0021",
-"ietf:cite-as": "https://doi.org/10.4598/12123487",
-"type": "Document"
+{
+  "id": "https://origin-system.org/resources/0021",
+  "ietf:cite-as": "https://doi.org/10.4598/12123487",
+  "type": "Document"
+}
     `.trim();
 </script>
 

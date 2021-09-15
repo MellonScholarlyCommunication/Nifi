@@ -1,13 +1,11 @@
 <script>
     import { onMount } from 'svelte';
+    import { targetList } from './registry.js';
     import MD5 from "crypto-js/md5";
 
     // Title of the box
     export let title = 'Inbox';
 
-    // Location of the inbox
-    export let ldpUrl; 
-    
     // Location of the inbox
     export let containerUrl; 
 
@@ -17,6 +15,12 @@
     export let maxRows = 5; 
 
     let promise = loadInbox(containerUrl);
+
+    let targets;
+    
+    targetList.subscribe( li => {
+        targets = li;
+    });
 
     async function loadInbox(url) {
         const response = await fetch(url);
@@ -45,6 +49,19 @@
         return `#${md5String.substring(0, 6)}`;
     }
 
+    function nameLookup(iri) {
+        const knownTarget = targets.filter( item => iri == item.id );
+
+        console.log(knownTarget);
+
+        if (knownTarget.length == 1) {
+            return knownTarget[0].name
+        }
+        else {
+            return "unkown";
+        }
+    }
+
     async function shortAbout(obj) {
         const notification = await loadInbox(obj['id']);    
         const id   = notification['id'];
@@ -56,16 +73,10 @@
         what = [].concat(what);
         type = [].concat(type);
 
-        const fromName = from
-                            .replaceAll(`${ldpUrl}/`,"")
-                            .replaceAll(/\/.*/g,"");
+        const fromName = nameLookup(from);
+        const toName   = nameLookup(to);
 
-        const toName = to
-                            .replaceAll(`${ldpUrl}/`,"")
-                            .replaceAll(/\/.*/g,"");
-        
-        const whatName = what.join("+");
-        
+        const whatName = what.join("+");        
         const typeName = type.join("+");
         
         return {
@@ -78,16 +89,18 @@
         }
     }
 
-    if (refreshInterval > 0) {
-        onMount( 
-            () => {
+    onMount( 
+        () => {
+            // Set a refresh interval when asked for
+            if (refreshInterval > 0) {
                 const interval = setInterval( 
                     () => { handleClick(); } ,  refreshInterval * 1000
                 );
 
                 return () => { clearInterval(interval) }
-            });
-    }
+            }     
+    });
+
 </script>
 
 <h3>{title}</h3>

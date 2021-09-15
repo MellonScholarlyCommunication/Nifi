@@ -6,7 +6,6 @@
     import Object from './notification/Object.svelte';
     import Type from './notification/Type.svelte';
 
-    export let ldpUrl;
     export let fromName;
     export let toName;
 
@@ -25,10 +24,23 @@
     async function sendToTarget() {
         let uuid    = uuidv4();
 
-        let jOrigin = JSON.parse(`{${origin}}`);
-        let jTarget = JSON.parse(`{${target}}`);
-        let jObject = JSON.parse(`{${object}}`);
-        let jActor  = JSON.parse(`{${actor}}`);
+        if (!origin) {
+            throw new Error("need an origin");
+        }
+        if (!target) {
+            throw new Error("need a target");
+        }
+        if (!object) {
+            throw new Error("need an object");
+        }
+        if (!actor) {
+            throw new Error("need an actor");
+        }
+
+        let jOrigin = JSON.parse(origin);
+        let jTarget = JSON.parse(target);
+        let jObject = JSON.parse(object);
+        let jActor  = JSON.parse(actor);
 
         let notification = {
             '@context': [
@@ -91,12 +103,17 @@
 <table>
     <tr>
         <td>
-            <Actor bind:actor ldpUrl={ldpUrl} name={fromName}/>
+            <Actor bind:actor name={fromName}/>
         </td>
     </tr>
     <tr>
         <td>
-            <Origin bind:origin ldpUrl={ldpUrl} name={fromName}/>
+            <Origin bind:origin name={fromName}/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <Target bind:target name={toName} />
         </td>
     </tr>
 </table>
@@ -107,12 +124,7 @@
 <table style="float: left;">
     <tr>
         <td>
-            <Object bind:object ldpUrl={ldpUrl} />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <Target bind:target ldpUrl={ldpUrl} name={toName} />
+            <Object bind:object />
         </td>
     </tr>
 </table>

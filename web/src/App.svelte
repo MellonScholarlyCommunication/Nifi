@@ -2,8 +2,13 @@
 	import Inbox from './Inbox.svelte';
 	import SendNotification from './SendNotification.svelte';
 	import Send from './Send.svelte';
+
 	export let name;
 	export let ldp;
+
+	function capitalize(string) {
+		return string.replace(/^\w/, (c) => c.toUpperCase());
+	}
 </script>
 
 <main>
@@ -11,52 +16,33 @@
 </main>
 
 <div class="row">
- <div class="column alice" >
-	<Send ldpUrl="{ldp}" fromName="alice" toName="bob" />
-   <h2>Alice</h2>
+ <div class="column" >
+	<Send fromName="alice"/>
+   <h2>{capitalize('alice')}</h2>
+
 	<Inbox title="Inbox"
-			ldpUrl={ldp}
 			containerUrl="{ldp}/alice/inbox"
 		   	refreshInterval="30"/>
- </div>
- <div class="column bob">
-	<Send ldpUrl="{ldp}" fromName="bob" toName="alice" />
-	<h2>Bob</h2>
-	<Inbox title="Inbox"
-			ldpUrl={ldp}
-			containerUrl="{ldp}/bob/inbox"
-			refreshInterval="30"/>
- </div>
-</div>
-
-<div class="row">
-	<div class="column alice">
 	<Inbox title="Events"
-			ldpUrl={ldp}
 			containerUrl="{ldp}/alice/events"
-		    refreshInterval="30"/>
-	</div>
-	<div class="column bob">
-	<Inbox title="Events"
-			ldpUrl={ldp}
-			containerUrl="{ldp}/bob/events"
 			refreshInterval="30"/>
-	</div>
-</div>
-
-<div class="row">
-	<div class="column orchestrator">
-		<Inbox title="Orchestrator"
-			ldpUrl={ldp}
+	<Inbox title="Orchestrator"
 			containerUrl="{ldp}/o_alice/inbox"
 			refreshInterval="30"/>
-	</div>
-	<div class="column orchestrator">
-		<Inbox title="Orchestrator"
-			ldpUrl={ldp}
+ </div>
+ <div class="column">
+	<Send fromName="bob"/>
+   <h2>Bob</h2>
+	<Inbox title="Inbox"
+			containerUrl="{ldp}/bob/inbox"
+		   	refreshInterval="30"/>
+	<Inbox title="Events"
+			containerUrl="{ldp}/bob/events"
+			refreshInterval="30"/>
+	<Inbox title="Orchestrator"
 			containerUrl="{ldp}/o_bob/inbox"
 			refreshInterval="30"/>
-	</div>
+ </div>
 </div>
 
 <style>
@@ -96,17 +82,7 @@
         display: table;
     }
 
-	.alice {
-		border: 1px solid #ccc;
-		border-radius: 16px;
-	}
-
-	.bob {
-		border: 1px solid #ccc;
-		border-radius: 16px;
-	} 
-
-	.orchestrator {
+	.column {
 		border: 1px solid #ccc;
 		border-radius: 16px;
 	}

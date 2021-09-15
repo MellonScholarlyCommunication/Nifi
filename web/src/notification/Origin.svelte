@@ -1,20 +1,29 @@
 <script>
-    export let ldpUrl;
+    import { onMount } from 'svelte';
+    import { orchestratorList } from '../registry.js';
+
     export let name;
-    export let origin = `
-"id": "${ldpUrl}/o_${name}/card.ttl#me",
-"type": "Service",
-"inbox": "${ldpUrl}/o_${name}/inbox"
-    `.trim();
+    export let origin;
+
+    function entryMap(item) {
+        return JSON.stringify({
+            id: item.id ,
+            type: item.type ,
+            inbox: item.inbox
+        });
+    }
+
+    onMount( () =>  {
+        orchestratorList.subscribe( li => {
+            li.forEach( entry => {
+                if (entry.name == name) {
+                    origin = entryMap(entry);
+                }
+            })
+        })
+    });
 </script>
 
 <b>Origin</b><br>
-<textarea bind:value={origin}/>
 
-<style>
-    textarea {
-        width: 400px;
-        height: 150px;
-        border: 2px dashed #D1C7AC;
-    }
-</style>
+{name.toUpperCase()}'S ORCHESTRATOR

@@ -1,16 +1,33 @@
 <script>
-    export let ldpUrl;
+    import { onMount } from 'svelte';
+    import { targetList } from '../registry.js';
+
     export let name;
-    export let actor =`
-"id": "${ldpUrl}/${name}/card.ttl#me",
-"type": "Person",
-"inbox": "${ldpUrl}/${name}/inbox"
-    `.trim();
-    
+    export let actor;
+
+    function entryMap(item) {
+        return JSON.stringify({
+            id: item.id ,
+            type: item.type ,
+            inbox: item.inbox
+        });
+    }
+
+    onMount( () =>  {
+        targetList.subscribe( li => {
+            li.forEach( entry => {
+                if (entry.name == name) {
+                    actor = entryMap(entry);
+                }
+            })
+        })
+    });
+
 </script>
 
 <b>Actor</b><br>
-<textarea bind:value={actor}/>
+
+{name.toUpperCase()}
 
 <style>
     textarea {
