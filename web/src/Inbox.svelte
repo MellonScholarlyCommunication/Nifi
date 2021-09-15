@@ -109,6 +109,7 @@
                 <div class="idbox" 
                      title="{about.id}"
                      style="background-color: {about.color}"></div>
+                     {about.color}
                     <a href="{obj.id}" title="{about.id}">
                 
                 <span class="from">{upperCase(about.from)}</span>
