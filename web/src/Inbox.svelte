@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import MD5 from "crypto-js/md5";
 
     // Title of the box
     export let title = 'Inbox';
@@ -39,8 +40,14 @@
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    function md5Color(string) {
+        let md5String = MD5(string).toString();
+        return `#${md5String.substring(0, 6)}`;
+    }
+
     async function shortAbout(obj) {
         const notification = await loadInbox(obj['id']);    
+        const id   = notification['id'];
         const from = notification['actor']['id'] || "unknown";
         const to   = notification['target']['id'] || "unknown";
         let what   = notification['object']['type'] || "unknown";
@@ -62,10 +69,12 @@
         const typeName = type.join("+");
         
         return {
-            "what" : whatName ,
-            "type" : typeName ,
-            "from" : fromName ,
-            "to"   : toName
+            "id"    : id,
+            "color" : md5Color(id),
+            "what"  : whatName ,
+            "type"  : typeName ,
+            "from"  : fromName ,
+            "to"    : toName
         }
     }
 
@@ -97,7 +106,10 @@
               ...loading notification
             {:then about}
                 <td>
-                    <a href="{obj.id}">
+                <div class="idbox" 
+                     title="{about.id}"
+                     style="background-color: {about.color}"></div>
+                    <a href="{obj.id}" title="{about.id}">
                 
                 <span class="from">{upperCase(about.from)}</span>
 
@@ -146,5 +158,15 @@
 
     .to {
         font-weight: bold;
+    }
+
+    .idbox {
+        float: left;
+        height: 10px;
+        width: 10px;
+        margin-top: 2px;
+        margin-right: 5px;
+        border: 1px solid black;
+        clear: both;
     }
 </style>

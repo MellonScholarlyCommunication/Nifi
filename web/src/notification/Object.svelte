@@ -1,5 +1,5 @@
 <script>
-    export let ldpUrl;
+    export let ldpUrl = "";
     
     export let object=`
 "id": "https://origin-system.org/resources/0021",
