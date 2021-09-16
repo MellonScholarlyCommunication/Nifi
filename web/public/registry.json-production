@@ -1,45 +1,45 @@
 {
     "cards" : [
         { 
-            "id":     "http://bellow2.ugent.be/institution/alice/card.ttl#me" , 
+            "id":     "http://157.193.231.95/institution/alice/card.ttl#me" , 
             "name":   "alice" ,
-            "inbox":  "http://bellow2.ugent.be/institution/alice/inbox" ,
-            "outbox": "http://bellow2.ugent.be/institution/alice/events" ,
-            "orchestrator": "http://bellow2.ugent.be/institution/o_alice/card.ttl#me",
+            "inbox":  "http://157.193.231.95/institution/alice/inbox" ,
+            "outbox": "http://157.193.231.95/institution/alice/events" ,
+            "orchestrator": "http://157.193.231.95/institution/o_alice/card.ttl#me",
             "type":   "Person"
         } ,
         { 
-            "id":     "http://bellow2.ugent.be/institution/bob/card.ttl#me" , 
+            "id":     "http://157.193.231.95/institution/bob/card.ttl#me" , 
             "name":   "bob" ,
-            "inbox":  "http://bellow2.ugent.be/institution/bob/inbox" ,
-            "outbox": "http://bellow2.ugent.be/institution/bob/events" ,
-            "orchestrator": "http://bellow2.ugent.be/institution/o_bob/card.ttl#me",
+            "inbox":  "http://157.193.231.95/institution/bob/inbox" ,
+            "outbox": "http://157.193.231.95/institution/bob/events" ,
+            "orchestrator": "http://157.193.231.95/institution/o_bob/card.ttl#me",
             "type":   "Person"
         } ,
         { 
-            "id":     "http://bellow2.ugent.be/institution/registration/card.ttl#me" , 
+            "id":     "http://157.193.231.95/institution/registration/card.ttl#me" , 
             "name":   "registration" ,
-            "inbox":  "http://bellow2.ugent.be/institution/registration/inbox" ,
-            "outbox": "http://bellow2.ugent.be/institution/registration/events" ,
-            "orchestrator": "http://bellow2.ugent.be/institution/o_bob/card.ttl#me",
+            "inbox":  "http://157.193.231.95/institution/registration/inbox" ,
+            "outbox": "http://157.193.231.95/institution/registration/events" ,
+            "orchestrator": "http://157.193.231.95/institution/o_bob/card.ttl#me",
             "type":   "Service"
         } ,
         { 
-            "id":    "http://bellow2.ugent.be/institution/o_alice/card.ttl#me" , 
+            "id":    "http://157.193.231.95/institution/o_alice/card.ttl#me" , 
             "name":  "alice orchestrator" ,
-            "inbox": "http://bellow2.ugent.be/institution/o_alice/inbox" ,
+            "inbox": "http://157.193.231.95/institution/o_alice/inbox" ,
             "type":  "Service"
         } ,
         { 
-            "id":    "http://bellow2.ugent.be/institution/o_bob/card.ttl#me" , 
+            "id":    "http://157.193.231.95/institution/o_bob/card.ttl#me" , 
             "name":  "bob orchestrator" ,
-            "inbox": "http://bellow2.ugent.be/institution/o_bob/inbox" ,
+            "inbox": "http://157.193.231.95/institution/o_bob/inbox" ,
             "type":  "Service"
         } ,
         { 
-            "id":    "http://bellow2.ugent.be/institution/o_registration/card.ttl#me" , 
+            "id":    "http://157.193.231.95/institution/o_registration/card.ttl#me" , 
             "name":  "registration orchestrator" ,
-            "inbox": "http://bellow2.ugent.be/institution/o_registration/inbox" ,
+            "inbox": "http://157.193.231.95/institution/o_registration/inbox" ,
             "type":  "Service"
         } 
     ]
