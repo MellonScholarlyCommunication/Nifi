@@ -8,7 +8,7 @@
     let selected;
 
     function updateTarget() {
-        target = JSON.stringify(selected);
+        target = entryMap(selected);
     }
 
     function entryMap(item) {

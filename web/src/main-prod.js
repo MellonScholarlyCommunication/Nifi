@@ -3,8 +3,7 @@ import App from './App.svelte';
 const app = new App({
 	target: document.body,
 	props: {
-		name: 'Mellon Demonstrator (Prod)',
-		ldp: 'http://157.193.231.95/institution'
+		name: 'Mellon Demonstrator (Prod)'
 	}
 });
 

@@ -1,6 +1,7 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onDestroy, onMount } from 'svelte';
     import { cardList } from './registry.js';
+    import { resetCount } from './stores.js'; 
     import MD5 from "crypto-js/md5";
 
     // Title of the box
@@ -18,9 +19,13 @@
 
     let cards;
     
-    cardList.subscribe( li => {
+    const cardUnsubscribe = cardList.subscribe( li => {
         cards= li;
     });
+
+    const resetUnsubscribe = resetCount.subscribe( _ => {
+        doRefresh();
+	});
 
     async function loadInbox(url) {
         const response = await fetch(url);
@@ -99,11 +104,15 @@
             }     
     });
 
+    onDestroy(() => {
+        cardUnsubscribe();
+        resetUnsubscribe();
+    });
 </script>
 
 <h3>{title}</h3>
 
-<div><i>{containerUrl}</i> <a href="#" on:click="{doRefresh}">Refresh</a></div>
+<div>[<i>{containerUrl}</i>]</div>
 
 {#await promise}
   <p>...loading inbox</p>

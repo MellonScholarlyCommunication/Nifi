@@ -1,9 +1,9 @@
 <script>
 	import PodView from './PodView.svelte';
 	import PodSelector from './PodSelector.svelte';
+	import Refresher from './Refresher.svelte';
 
 	export let name;
-
 	export let pod1;
 	export let pod2;
 	export let pod3;
@@ -13,6 +13,8 @@
 <main>
 	<h1>{name}</h1>
 </main>
+
+<Refresher/>
 
 <div class="row">
  <div class="column" >
