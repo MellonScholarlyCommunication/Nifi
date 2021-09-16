@@ -15,7 +15,7 @@
     // Maximum number of rows in the output
     export let maxRows = 5; 
 
-    $: promise = loadInbox(containerUrl);
+    $: promise = loadResouce(containerUrl);
 
     let cards;
     
@@ -27,14 +27,14 @@
         doRefresh();
 	});
 
-    async function loadInbox(url) {
+    async function loadResouce(url) {
         const response = await fetch(url);
         const data = await response.json();
         return data;
     }
 
     function doRefresh() {
-        promise = loadInbox(containerUrl);
+        promise = loadResouce(containerUrl);
     }
 
     function shortId(url) {
@@ -55,23 +55,53 @@
     }
 
     function nameLookup(iri) {
+        if (!iri) {
+            return "someone";
+        }
+
         const knownCard = cards.filter( item => iri == item.id );
 
         if (knownCard.length == 1) {
             return knownCard[0].name
         }
         else {
-            return "unkown";
+            return "someone";
         }
     }
 
     async function shortAbout(obj) {
-        const notification = await loadInbox(obj['id']);    
+        const notification = await loadResouce(obj['id']);    
         const id   = notification['id'];
-        const from = notification['actor']['id'] || "unknown";
-        const to   = notification['target']['id'] || "unknown";
-        let what   = notification['object']['type'] || "unknown";
-        let type   = notification['type'] || "";
+
+        let from;
+
+        if (notification['actor']) {
+            from = notification['actor']['id']; 
+        }
+
+        let to;
+
+        if (notification['target']) {
+            to = notification['target']['id'];
+        }
+
+        let what;
+
+        if (notification['object']) {
+            what = notification['object']['type'] || "something";
+        }
+        else {
+            what = "something";
+        }
+
+        let type;
+
+        if (notification['type']) {
+            type = notification['type'] || "";
+        }
+        else {
+            type = "whatever";
+        }
 
         what = [].concat(what);
         type = [].concat(type);
