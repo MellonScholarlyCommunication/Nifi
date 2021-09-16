@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { targetList } from '../registry.js';
+    import { cardList } from '../registry.js';
 
     export let name;
     export let target;
@@ -20,8 +20,8 @@
     }
     
     onMount( () =>  {
-        targetList.subscribe( li => {
-            li.forEach( entry => {
+        cardList.subscribe( card => {
+            card.forEach( entry => {
                 if (entry.name == name) {
                     selected = entry;
                     target   = entryMap(entry);
@@ -35,7 +35,7 @@
 
 <select bind:value="{selected}" on:change="{updateTarget}">
         <option>Choose a target</option>
-    {#each $targetList as t}
-        <option value={t}>{t.name.toUpperCase()}</option>
+    {#each $cardList as card}
+        <option value={card}>{card.name.toUpperCase()}</option>
     {/each}
 </select>

@@ -1,14 +1,13 @@
 <script>
-	import Inbox from './Inbox.svelte';
-	import SendNotification from './SendNotification.svelte';
-	import Send from './Send.svelte';
+	import PodView from './PodView.svelte';
+	import PodSelector from './PodSelector.svelte';
 
 	export let name;
-	export let ldp;
 
-	function capitalize(string) {
-		return string.replace(/^\w/, (c) => c.toUpperCase());
-	}
+	export let pod1;
+	export let pod2;
+	export let pod3;
+	export let pod4;
 </script>
 
 <main>
@@ -17,32 +16,24 @@
 
 <div class="row">
  <div class="column" >
-	<Send fromName="alice"/>
-   <h2>{capitalize('alice')}</h2>
-
-	<Inbox title="Inbox"
-			containerUrl="{ldp}/alice/inbox"
-		   	refreshInterval="30"/>
-	<Inbox title="Events"
-			containerUrl="{ldp}/alice/events"
-			refreshInterval="30"/>
-	<Inbox title="Orchestrator"
-			containerUrl="{ldp}/o_alice/inbox"
-			refreshInterval="30"/>
+	 <PodSelector bind:pod={pod1}/>
+	 <PodView pod={pod1}/>
  </div>
  <div class="column">
-	<Send fromName="bob"/>
-   <h2>Bob</h2>
-	<Inbox title="Inbox"
-			containerUrl="{ldp}/bob/inbox"
-		   	refreshInterval="30"/>
-	<Inbox title="Events"
-			containerUrl="{ldp}/bob/events"
-			refreshInterval="30"/>
-	<Inbox title="Orchestrator"
-			containerUrl="{ldp}/o_bob/inbox"
-			refreshInterval="30"/>
+	 <PodSelector bind:pod={pod2}/>
+	 <PodView pod={pod2}/>
  </div>
+</div>
+
+<div class="row">
+	<div class="column" >
+		<PodSelector bind:pod={pod3}/>
+		<PodView pod={pod3}/>
+	</div>
+	<div class="column">
+		<PodSelector bind:pod={pod4}/>
+		<PodView pod={pod4}/>
+	</div>
 </div>
 
 <style>

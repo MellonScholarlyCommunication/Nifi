@@ -1,46 +1,46 @@
 {
-    "targets" : [
+    "cards" : [
         { 
             "id":     "http://127.0.0.1:2000/alice/card.ttl#me" , 
             "name":   "alice" ,
             "inbox":  "http://127.0.0.1:2000/alice/inbox" ,
-            "events": "http://127.0.0.1:2000/alice/events" ,
+            "outbox": "http://127.0.0.1:2000/alice/events" ,
+            "orchestrator": "http://127.0.0.1:2000/o_alice/card.ttl#me",
             "type":   "Person"
         } ,
         { 
             "id":     "http://127.0.0.1:2000/bob/card.ttl#me" , 
             "name":   "bob" ,
             "inbox":  "http://127.0.0.1:2000/bob/inbox" ,
-            "events": "http://127.0.0.1:2000/bob/events" ,
+            "outbox": "http://127.0.0.1:2000/bob/events" ,
+            "orchestrator": "http://127.0.0.1:2000/o_bob/card.ttl#me",
             "type":   "Person"
         } ,
         { 
             "id":     "http://127.0.0.1:2000/registration/card.ttl#me" , 
             "name":   "registration" ,
             "inbox":  "http://127.0.0.1:2000/registration/inbox" ,
-            "events": "http://127.0.0.1:2000/registration/events" ,
-            "type":   "Person"
-        }
-    ],
-
-    "orchestrators" : [
+            "outbox": "http://127.0.0.1:2000/registration/events" ,
+            "orchestrator": "http://127.0.0.1:2000/o_bob/card.ttl#me",
+            "type":   "Service"
+        } ,
         { 
             "id":    "http://127.0.0.1:2000/o_alice/card.ttl#me" , 
-            "name":  "alice" ,
+            "name":  "alice orchestrator" ,
             "inbox": "http://127.0.0.1:2000/o_alice/inbox" ,
-            "type":  "Person"
+            "type":  "Service"
         } ,
         { 
             "id":    "http://127.0.0.1:2000/o_bob/card.ttl#me" , 
-            "name":  "bob" ,
+            "name":  "bob orchestrator" ,
             "inbox": "http://127.0.0.1:2000/o_bob/inbox" ,
-            "type":  "Person"
+            "type":  "Service"
         } ,
         { 
             "id":    "http://127.0.0.1:2000/o_registration/card.ttl#me" , 
-            "name":  "registration" ,
+            "name":  "registration orchestrator" ,
             "inbox": "http://127.0.0.1:2000/o_registration/inbox" ,
-            "type":  "Person"
+            "type":  "Service"
         } 
     ]
 }

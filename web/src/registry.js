@@ -6,20 +6,9 @@ async function fetchRegistry() {
 	return data;
 }
 
-export const targetList = readable([], function start(set) {
+export const cardList = readable([], function start(set) {
 	fetchRegistry().then( config => {
-		set(config.targets);
-	});
-
-	return function stop() {
-		// Function that should be run when the last subscriber 
-		// Stops reading
-	};
-});
-
-export const orchestratorList = readable([], function start(set) {
-	fetchRegistry().then( config => {
-		set(config.orchestrators);
+		set(config.cards);
 	});
 
 	return function stop() {

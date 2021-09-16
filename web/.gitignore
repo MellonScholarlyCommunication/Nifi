@@ -1,4 +1,4 @@
-./node_modules/
-./public/build/
-./public/registry.json
+/node_modules/**
+/public/build/
+/public/registry.json
 .DS_Store

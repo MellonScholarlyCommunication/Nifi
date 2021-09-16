@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { targetList } from '../registry.js';
+    import { cardList } from '../registry.js';
 
     export let name;
     export let actor;
@@ -14,7 +14,7 @@
     }
 
     onMount( () =>  {
-        targetList.subscribe( li => {
+        cardList.subscribe( li => {
             li.forEach( entry => {
                 if (entry.name == name) {
                     actor = entryMap(entry);
@@ -28,11 +28,3 @@
 <b>Actor</b><br>
 
 {name.toUpperCase()}
-
-<style>
-    textarea {
-        width: 400px;
-        height: 150px;
-        border: 2px dashed #D1C7AC;
-    }
-</style>

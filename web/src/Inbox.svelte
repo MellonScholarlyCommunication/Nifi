@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { targetList } from './registry.js';
+    import { cardList } from './registry.js';
     import MD5 from "crypto-js/md5";
 
     // Title of the box
@@ -14,12 +14,12 @@
     // Maximum number of rows in the output
     export let maxRows = 5; 
 
-    let promise = loadInbox(containerUrl);
+    $: promise = loadInbox(containerUrl);
 
-    let targets;
+    let cards;
     
-    targetList.subscribe( li => {
-        targets = li;
+    cardList.subscribe( li => {
+        cards= li;
     });
 
     async function loadInbox(url) {
@@ -28,7 +28,7 @@
         return data;
     }
 
-    function handleClick() {
+    function doRefresh() {
         promise = loadInbox(containerUrl);
     }
 
@@ -50,12 +50,10 @@
     }
 
     function nameLookup(iri) {
-        const knownTarget = targets.filter( item => iri == item.id );
+        const knownCard = cards.filter( item => iri == item.id );
 
-        console.log(knownTarget);
-
-        if (knownTarget.length == 1) {
-            return knownTarget[0].name
+        if (knownCard.length == 1) {
+            return knownCard[0].name
         }
         else {
             return "unkown";
@@ -94,7 +92,7 @@
             // Set a refresh interval when asked for
             if (refreshInterval > 0) {
                 const interval = setInterval( 
-                    () => { handleClick(); } ,  refreshInterval * 1000
+                    () => { doRefresh(); } ,  refreshInterval * 1000
                 );
 
                 return () => { clearInterval(interval) }
@@ -105,7 +103,7 @@
 
 <h3>{title}</h3>
 
-<div><i>{containerUrl}</i> <a href="#" on:click="{handleClick}">Refresh</a></div>
+<div><i>{containerUrl}</i> <a href="#" on:click="{doRefresh}">Refresh</a></div>
 
 {#await promise}
   <p>...loading inbox</p>
