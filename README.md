@@ -8,17 +8,18 @@ This is a demonstrator for the Mellon project which contains:
 
 # Live demonstrator
 
-http://157.193.231.95/~phochste
+http://157.193.231.95/~phochste/
 
 # Requirements
 
 - [Apache Nifi](https://nifi.apache.org)
    - We require Nifi 1.13.2 and Nifi Registry
 
-For this project we need two subprojects:
+For this project we need three subprojects:
 
 - [POrchestrator](https://github.com/MellonScholarlyCommunication/POrchestrator) - An orchestrator component in N3 + Prolog
 - [POrchestratorHelpers](https://github.com/MellonScholarlyCommunication/POrchestratorHelpers) - Command line tools and Nifi processors
+- [POrchestratorDemo](https://github.com/MellonScholarlyCommunication/POrchestratorDemo) - Demonstrator frontend
 
 # Install
 
@@ -85,8 +86,6 @@ For this project we need two subprojects:
 
 # Usage
 
-- Open a browser to http://localhost:1999 to see the LDN inbox
-- Add a JSON-LD file with an AS2 activity to `POrchestratorHelper/local/ldn-sender1` 
-- This file will be processed by the rules defined in `POrchestrator/rules`
-- The event log will be made available in `POrchestratorHelper/local/orchestrator`
-- AS2 responses will be sent to the orgin defined in the AS2 JSON-LD input
+- Open a browser to http://localhost:2000 to see the LPD system with inboxes, eventslogs, ...
+- Use the POrchestratorDemo on http://localhost:5000 to interact with the demo orchestrator/LDP system
+- All notifications will be processed by the rules defined in `POrchestratorHelper/local/orchestrator`
