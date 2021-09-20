@@ -1,4 +1,0 @@
-/node_modules/**
-/public/build/
-/public/registry.json
-.DS_Store
